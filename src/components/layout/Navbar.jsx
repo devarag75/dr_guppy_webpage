@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
+import logoImage from "../../assets/logo.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +59,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group" id="navbar-logo">
               <img 
-                src={`${import.meta.env.BASE_URL}logo.png`} 
+                src={logoImage} 
                 alt="Dr Guppy Farm Logo" 
                 className="w-12 h-12 object-contain rounded-full shadow-md group-hover:shadow-lg transition-shadow bg-white"
                 onError={(e) => {

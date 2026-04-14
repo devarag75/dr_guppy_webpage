@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logoImage from "../../assets/logo.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,7 +13,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-5 group">
               <img 
-                src={`${import.meta.env.BASE_URL}logo.png`} 
+                src={logoImage} 
                 alt="Dr Guppy Farm Logo" 
                 className="w-12 h-12 object-contain rounded-full shadow-md bg-white grayscale group-hover:grayscale-0 transition-all duration-300"
                 onError={(e) => {
