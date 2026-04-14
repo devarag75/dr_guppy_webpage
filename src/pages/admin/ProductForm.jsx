@@ -193,38 +193,54 @@ export default function ProductForm() {
   }
 
   return (
-    <div className="py-6 md:py-10" id="product-form-page">
+    <div className="py-6 md:py-10 bg-dark-900/5 min-h-screen" id="product-form-page">
       <div className="container-app max-w-2xl">
-        <h1 className="font-heading font-bold text-2xl md:text-3xl text-text-primary mb-2">
-          {isEdit ? "Edit Product" : "Add New Product"}
-        </h1>
-        <p className="text-text-muted text-sm mb-8">
-          {isEdit ? "Update the product details below" : "Fill in the details to add a new guppy"}
-        </p>
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="font-heading font-black text-2xl md:text-4xl text-text-primary tracking-tight">
+              {isEdit ? "Edit" : "Add"} <span className="text-neon-green">Guppy</span>
+            </h1>
+            <p className="text-text-muted text-sm mt-1 font-medium">
+              {isEdit ? "Update current product listing" : "Create a new product listing"}
+            </p>
+          </div>
+          <button
+            onClick={() => navigate("/admin/products")}
+            className="p-3 rounded-xl border border-dark-600 bg-white hover:bg-dark-600/50 transition-all text-text-muted"
+            title="Go back"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Name */}
-          <div className="glass-card p-5 space-y-5">
-            <h3 className="font-heading font-semibold text-text-primary flex items-center gap-2">
-              🐟 Basic Info
-            </h3>
+          {/* Basic Info */}
+          <div className="glass-card p-6 md:p-8 space-y-6 shadow-xl border-dark-600/50">
+            <div className="pb-4 border-b border-dark-600 mb-2">
+              <h3 className="font-heading font-black text-lg text-text-primary flex items-center gap-3 uppercase tracking-tighter">
+                <span className="w-8 h-8 rounded-lg bg-neon-green/10 flex items-center justify-center text-sm">01</span>
+                Basic Information
+              </h3>
+            </div>
 
             <div>
-              <label htmlFor="name" className="form-label">Product Name *</label>
+              <label htmlFor="name" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Product Name *</label>
               <input
                 id="name"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
                 placeholder="e.g., Red Dragon Guppy Pair"
-                className="form-input"
+                className="form-input !rounded-xl border-dark-600 !py-3 shadow-sm focus:border-neon-green"
                 required
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <label htmlFor="price" className="form-label">Price (₹) *</label>
+                <label htmlFor="price" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Price (₹) *</label>
                 <input
                   id="price"
                   name="price"
@@ -232,13 +248,13 @@ export default function ProductForm() {
                   value={form.price}
                   onChange={handleChange}
                   placeholder="150"
-                  className="form-input"
+                  className="form-input !rounded-xl border-dark-600 !py-3 shadow-sm focus:border-neon-green"
                   min="1"
                   required
                 />
               </div>
               <div>
-                <label htmlFor="stock" className="form-label">Stock *</label>
+                <label htmlFor="stock" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Inventory/Stock *</label>
                 <input
                   id="stock"
                   name="stock"
@@ -246,7 +262,7 @@ export default function ProductForm() {
                   value={form.stock}
                   onChange={handleChange}
                   placeholder="10"
-                  className="form-input"
+                  className="form-input !rounded-xl border-dark-600 !py-3 shadow-sm focus:border-neon-green"
                   min="0"
                   required
                 />
@@ -254,45 +270,50 @@ export default function ProductForm() {
             </div>
 
             <div>
-              <label htmlFor="description" className="form-label">Description</label>
+              <label htmlFor="description" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Detailed Description</label>
               <textarea
                 id="description"
                 name="description"
                 value={form.description}
                 onChange={handleChange}
-                placeholder="Describe the guppy — color, fins, breeding details..."
-                className="form-input min-h-[120px] resize-y"
-                rows={4}
+                placeholder="Describe the colors, tail shape, and breeding background..."
+                className="form-input !rounded-xl border-dark-600 min-h-[140px] resize-y shadow-sm focus:border-neon-green"
+                rows={5}
               />
             </div>
           </div>
 
-          {/* Classification */}
-          <div className="glass-card p-5 space-y-5">
-            <h3 className="font-heading font-semibold text-text-primary flex items-center gap-2">
-              📂 Classification
-            </h3>
+          {/* Configuration */}
+          <div className="glass-card p-6 md:p-8 space-y-6 shadow-xl border-dark-600/50">
+            <div className="pb-4 border-b border-dark-600 mb-2">
+              <h3 className="font-heading font-black text-lg text-text-primary flex items-center gap-3 uppercase tracking-tighter">
+                <span className="w-8 h-8 rounded-lg bg-aqua/10 flex items-center justify-center text-sm">02</span>
+                Configuration
+              </h3>
+            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div>
-                <label htmlFor="category" className="form-label">Category</label>
-                <select id="category" name="category" value={form.category} onChange={handleChange} className="form-select">
-                  {CATEGORIES.map((c) => (
-                    <option key={c.id} value={c.id}>{c.name}</option>
-                  ))}
-                </select>
+                <label htmlFor="category" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Category</label>
+                <div className="relative">
+                  <select id="category" name="category" value={form.category} onChange={handleChange} className="form-select !rounded-xl border-dark-600 !py-3 appearance-none shadow-sm focus:border-neon-green">
+                    {CATEGORIES.map((c) => (
+                      <option key={c.id} value={c.id}>{c.name}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
               <div>
-                <label htmlFor="type" className="form-label">Type</label>
-                <select id="type" name="type" value={form.type} onChange={handleChange} className="form-select">
+                <label htmlFor="type" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Order Type</label>
+                <select id="type" name="type" value={form.type} onChange={handleChange} className="form-select !rounded-xl border-dark-600 !py-3 shadow-sm focus:border-neon-green">
                   {TYPES.map((t) => (
                     <option key={t.id} value={t.id}>{t.name}</option>
                   ))}
                 </select>
               </div>
               <div>
-                <label htmlFor="color" className="form-label">Color</label>
-                <select id="color" name="color" value={form.color} onChange={handleChange} className="form-select">
+                <label htmlFor="color" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Dominant Color</label>
+                <select id="color" name="color" value={form.color} onChange={handleChange} className="form-select !rounded-xl border-dark-600 !py-3 shadow-sm focus:border-neon-green">
                   {COLORS.map((c) => (
                     <option key={c.id} value={c.id}>{c.name}</option>
                   ))}
@@ -300,173 +321,170 @@ export default function ProductForm() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-dark-600 pt-6">
               <div>
-                <label htmlFor="age" className="form-label">Age</label>
-                <input id="age" name="age" value={form.age} onChange={handleChange} placeholder="e.g., 3-4 months" className="form-input" />
+                <label htmlFor="age" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Approx. Age</label>
+                <input id="age" name="age" value={form.age} onChange={handleChange} placeholder="e.g., 3 mo" className="form-input !rounded-xl border-dark-600 !py-3 shadow-sm" />
               </div>
               <div>
-                <label htmlFor="size" className="form-label">Size</label>
-                <input id="size" name="size" value={form.size} onChange={handleChange} placeholder="e.g., 3-4 cm" className="form-input" />
+                <label htmlFor="size" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Adult Size</label>
+                <input id="size" name="size" value={form.size} onChange={handleChange} placeholder="e.g., 4 cm" className="form-input !rounded-xl border-dark-600 !py-3 shadow-sm" />
               </div>
               <div>
-                <label htmlFor="breedingInfo" className="form-label">Breeding Info</label>
-                <input id="breedingInfo" name="breedingInfo" value={form.breedingInfo} onChange={handleChange} placeholder="e.g., F5 generation" className="form-input" />
+                <label htmlFor="breedingInfo" className="form-label text-[10px] uppercase tracking-widest font-black opacity-70 mb-2 block">Breeding Status</label>
+                <input id="breedingInfo" name="breedingInfo" value={form.breedingInfo} onChange={handleChange} placeholder="e.g., Proven Pair" className="form-input !rounded-xl border-dark-600 !py-3 shadow-sm" />
               </div>
             </div>
 
-            <label className="flex items-center gap-3 cursor-pointer p-3 rounded-xl bg-dark-700/50 border border-dark-600 hover:border-dark-400 transition-colors">
+            <label className="flex items-center gap-4 cursor-pointer p-4 rounded-xl bg-dark-700/50 border border-dark-600 hover:border-neon-green/30 transition-all group">
               <input
                 type="checkbox"
                 name="featured"
                 checked={form.featured}
                 onChange={handleChange}
-                className="w-5 h-5 rounded accent-neon-green"
+                className="w-6 h-6 rounded-lg accent-neon-green cursor-pointer"
               />
               <div>
-                <span className="text-text-primary text-sm font-medium">Featured Product</span>
-                <p className="text-text-muted text-xs">Show on homepage carousel</p>
+                <span className="text-text-primary text-sm font-black uppercase tracking-tight group-hover:text-neon-green transition-colors">Promote as Featured</span>
+                <p className="text-text-muted text-[11px] font-medium">Highlight this product on the store home page</p>
               </div>
             </label>
           </div>
 
-          {/* Images */}
-          <div className="glass-card p-5 space-y-5">
-            <h3 className="font-heading font-semibold text-text-primary flex items-center gap-2">
-              📸 Images
-            </h3>
+          {/* Media */}
+          <div className="glass-card p-6 md:p-8 space-y-6 shadow-xl border-dark-600/50">
+            <div className="pb-4 border-b border-dark-600 mb-2">
+              <h3 className="font-heading font-black text-lg text-text-primary flex items-center gap-3 uppercase tracking-tighter">
+                <span className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-sm">03</span>
+                Product Media
+              </h3>
+            </div>
 
-            {/* Existing Images */}
-            {existingImages.length > 0 && (
-              <div>
-                <p className="text-text-muted text-xs mb-2">Current Images</p>
-                <div className="flex flex-wrap gap-3">
-                  {existingImages.map((url, i) => (
-                    <div key={i} className="relative group">
-                      <img src={url} alt="" className="w-20 h-20 rounded-xl object-cover border border-dark-600" />
-                      <button
-                        type="button"
-                        onClick={() => removeExistingImage(i)}
-                        className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-coral text-white text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        ×
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* New Image Previews */}
-            {imagePreviews.length > 0 && (
-              <div>
-                <p className="text-text-muted text-xs mb-2">New Images</p>
-                <div className="flex flex-wrap gap-3">
-                  {imagePreviews.map((preview, i) => (
-                    <div key={i} className="relative group">
-                      <img src={preview} alt="" className="w-20 h-20 rounded-xl object-cover border border-neon-green/30" />
-                      <button
-                        type="button"
-                        onClick={() => removeNewImage(i)}
-                        className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-coral text-white text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        ×
-                      </button>
-                      {uploadProgress[`img_${i}`] !== undefined && (
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-dark-600 rounded-b-xl overflow-hidden">
-                          <div className="h-full bg-neon-green transition-all" style={{ width: `${uploadProgress[`img_${i}`]}%` }} />
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Upload Button */}
-            <label className="flex flex-col items-center justify-center p-8 rounded-xl border-2 border-dashed border-dark-500 hover:border-neon-green/30 cursor-pointer transition-colors bg-dark-700/30">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-text-muted mb-2">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" />
-              </svg>
-              <span className="text-text-secondary text-sm font-medium">Tap to upload images</span>
-              <span className="text-text-muted text-xs mt-1">JPG, PNG • Max 5 images</span>
-              <input
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handleImageChange}
-                className="hidden"
-              />
-            </label>
-          </div>
-
-          {/* Video */}
-          <div className="glass-card p-5 space-y-5">
-            <h3 className="font-heading font-semibold text-text-primary flex items-center gap-2">
-              🎥 Video (Optional)
-            </h3>
-
-            {videoPreview && (
-              <div className="relative">
-                <video src={videoPreview} controls className="w-full rounded-xl aspect-video" preload="metadata" />
-                <button
-                  type="button"
-                  onClick={() => { setVideoFile(null); setVideoPreview(""); }}
-                  className="absolute top-2 right-2 p-1.5 rounded-full bg-dark-900/70 text-coral hover:bg-coral hover:text-white transition-all"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
-                </button>
-                {uploadProgress.video !== undefined && (
-                  <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-dark-600 rounded-b-xl overflow-hidden">
-                    <div className="h-full bg-neon-green transition-all" style={{ width: `${uploadProgress.video}%` }} />
+            {/* Images Container */}
+            <div className="space-y-4">
+              <label className="text-[10px] uppercase tracking-widest font-black opacity-70 block">Gallery Images (Max 5)</label>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                {/* Existing */}
+                {existingImages.map((url, i) => (
+                  <div key={`exist-${i}`} className="relative group aspect-square">
+                    <img src={url} alt="" className="w-full h-full rounded-xl object-cover border border-dark-600 shadow-sm" />
+                    <button
+                      type="button"
+                      onClick={() => removeExistingImage(i)}
+                      className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-coral text-white text-base flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-transform z-10 font-bold"
+                    >
+                      ×
+                    </button>
                   </div>
+                ))}
+                
+                {/* Previews */}
+                {imagePreviews.map((preview, i) => (
+                  <div key={`new-${i}`} className="relative group aspect-square">
+                    <img src={preview} alt="" className="w-full h-full rounded-xl object-cover border-2 border-neon-green/30 shadow-md" />
+                    <button
+                      type="button"
+                      onClick={() => removeNewImage(i)}
+                      className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-coral text-white text-base flex items-center justify-center shadow-lg z-10 font-bold"
+                    >
+                      ×
+                    </button>
+                    {uploadProgress[`img_${i}`] !== undefined && (
+                      <div className="absolute inset-x-2 bottom-2 h-1.5 bg-white/20 rounded-full overflow-hidden backdrop-blur-md">
+                        <div className="h-full bg-neon-green transition-all" style={{ width: `${uploadProgress[`img_${i}`]}%` }} />
+                      </div>
+                    )}
+                  </div>
+                ))}
+
+                {/* Upload Trigger */}
+                {(existingImages.length + imagePreviews.length < 5) && (
+                  <label className="flex flex-col items-center justify-center aspect-square rounded-2xl border-2 border-dashed border-dark-600 hover:border-neon-green/40 hover:bg-neon-green/5 cursor-pointer transition-all group">
+                    <div className="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-text-muted">
+                        <path d="M12 5v14M5 12h14" />
+                      </svg>
+                    </div>
+                    <span className="text-[10px] font-black uppercase text-text-muted tracking-tighter">Add</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={handleImageChange}
+                      className="hidden"
+                    />
+                  </label>
                 )}
               </div>
-            )}
+            </div>
 
-            {!videoPreview && (
-              <label className="flex flex-col items-center justify-center p-8 rounded-xl border-2 border-dashed border-dark-500 hover:border-aqua/30 cursor-pointer transition-colors bg-dark-700/30">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-text-muted mb-2">
-                  <polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                </svg>
-                <span className="text-text-secondary text-sm font-medium">Tap to upload video</span>
-                <span className="text-text-muted text-xs mt-1">MP4, MOV • Max 50MB</span>
-                <input
-                  type="file"
-                  accept="video/*"
-                  onChange={handleVideoChange}
-                  className="hidden"
-                />
-              </label>
-            )}
+            {/* Video Container */}
+            <div className="pt-6 border-t border-dark-600">
+              <label className="text-[10px] uppercase tracking-widest font-black opacity-70 block mb-4">Product Video (Optional)</label>
+              
+              {videoPreview ? (
+                <div className="relative group rounded-2xl overflow-hidden border border-dark-600 shadow-xl bg-black">
+                  <video src={videoPreview} controls className="w-full aspect-video" preload="metadata" />
+                  <button
+                    type="button"
+                    onClick={() => { setVideoFile(null); setVideoPreview(""); }}
+                    className="absolute top-4 right-4 p-2.5 rounded-xl bg-dark-900/80 text-coral hover:bg-coral hover:text-white transition-all transform md:scale-0 group-hover:scale-100 font-bold"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                  </button>
+                  {uploadProgress.video !== undefined && (
+                    <div className="absolute bottom-0 left-0 right-0 h-2 bg-white/20 overflow-hidden">
+                      <div className="h-full bg-aqua transition-all" style={{ width: `${uploadProgress.video}%` }} />
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <label className="flex flex-col items-center justify-center p-12 rounded-2xl border-2 border-dashed border-dark-600 hover:border-aqua/40 hover:bg-aqua/5 cursor-pointer transition-all group">
+                  <div className="w-14 h-14 rounded-2xl bg-dark-700 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-text-muted">
+                      <polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                  </div>
+                  <span className="text-text-primary text-sm font-black uppercase tracking-tight">Select Product Video</span>
+                  <span className="text-text-muted text-[11px] mt-1 font-medium">MP4 or MOV Format • Up to 50MB</span>
+                  <input
+                    type="file"
+                    accept="video/*"
+                    onChange={handleVideoChange}
+                    className="hidden"
+                  />
+                </label>
+              )}
+            </div>
           </div>
 
-          {/* Submit */}
-          <div className="flex gap-4">
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-6">
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary flex-1 py-3.5 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn-primary flex-1 py-4 text-sm uppercase tracking-widest font-black disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-neon-green/10"
               id="submit-product-btn"
             >
               {loading ? (
-                <span className="flex items-center justify-center gap-2">
+                <span className="flex items-center justify-center gap-3">
                   <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" className="opacity-25" />
                     <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" fill="currentColor" className="opacity-75" />
                   </svg>
-                  {isEdit ? "Updating..." : "Adding..."}
+                  Processing...
                 </span>
               ) : (
-                isEdit ? "Update Product" : "Add Product"
+                isEdit ? "Update Changes" : "Create Product"
               )}
             </button>
             <button
               type="button"
               onClick={() => navigate("/admin/products")}
-              className="btn-ghost py-3.5 px-6"
+              className="px-8 py-4 rounded-xl text-text-muted font-bold text-sm hover:bg-dark-600/50 transition-all border border-dark-600"
             >
               Cancel
             </button>

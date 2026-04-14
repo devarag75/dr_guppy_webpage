@@ -38,57 +38,57 @@ export default function Login() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center py-10" id="admin-login-page">
       <div className="container-app max-w-md">
-        <div className="glass-card p-8 animate-fade-in-up">
+        <div className="glass-card p-8 md:p-10 animate-fade-in-up border-dark-600/50 shadow-xl">
           {/* Header */}
-          <div className="text-center mb-8">
-            <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-neon-green to-aqua flex items-center justify-center text-dark-900 font-bold text-lg font-heading mb-4 shadow-lg shadow-neon-green-glow/30">
-              DR
+          <div className="text-center mb-10">
+            <div className="w-20 h-20 mx-auto rounded-full bg-white border border-dark-600 shadow-sm flex items-center justify-center text-dark-900 font-bold text-xl font-heading mb-6 group-hover:scale-105 transition-transform overflow-hidden px-4">
+              <span className="font-black tracking-tighter">DR <span className="text-neon-green">G</span></span>
             </div>
-            <h1 className="font-heading font-bold text-2xl text-text-primary">Admin Login</h1>
-            <p className="text-text-muted text-sm mt-1">Sign in to manage your products</p>
+            <h1 className="font-heading font-black text-2xl md:text-3xl text-text-primary tracking-tight">Admin Login</h1>
+            <p className="text-text-muted text-sm mt-2 font-medium">Sign in to manage your collection</p>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="email" className="form-label">Email</label>
+              <label htmlFor="email" className="form-label text-xs uppercase tracking-widest font-bold opacity-70 mb-2 block">Email Address</label>
               <input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@example.com"
-                className="form-input"
+                placeholder="admin@drguppy.com"
+                className="form-input !rounded-xl border-dark-600 !py-3"
                 autoComplete="email"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="form-label">Password</label>
+              <label htmlFor="password" className="form-label text-xs uppercase tracking-widest font-bold opacity-70 mb-2 block">Password</label>
               <div className="relative">
                 <input
                   id="password"
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  className="form-input pr-12"
+                  placeholder="••••••••"
+                  className="form-input !rounded-xl border-dark-600 !py-3 pr-12"
                   autoComplete="current-password"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-secondary transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted hover:text-neon-green transition-colors"
                 >
                   {showPassword ? (
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
                       <line x1="1" y1="1" x2="23" y2="23" />
                     </svg>
                   ) : (
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" />
                     </svg>
                   )}
@@ -99,19 +99,19 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary w-full py-3.5 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn-primary w-full py-4 text-sm uppercase tracking-widest font-black disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-neon-green/20"
               id="login-submit-btn"
             >
               {loading ? (
-                <span className="flex items-center justify-center gap-2">
+                <span className="flex items-center justify-center gap-3">
                   <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" className="opacity-25" />
                     <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" fill="currentColor" className="opacity-75" />
                   </svg>
-                  Signing in...
+                  Authenticating...
                 </span>
               ) : (
-                "Sign In"
+                "Sign In to Panel"
               )}
             </button>
           </form>

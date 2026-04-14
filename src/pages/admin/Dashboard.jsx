@@ -66,81 +66,81 @@ export default function Dashboard() {
     <div className="py-6 md:py-10" id="admin-dashboard">
       <div className="container-app">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10 pb-6 border-b border-dark-600">
           <div>
-            <h1 className="font-heading font-bold text-2xl md:text-3xl text-text-primary">
-              Admin Dashboard
+            <h1 className="font-heading font-black text-2xl md:text-4xl text-text-primary tracking-tight">
+              Admin <span className="text-neon-green">Panel</span>
             </h1>
-            <p className="text-text-muted text-sm mt-1">
-              Welcome, {currentUser?.email || "Admin"} 👋
+            <p className="text-text-muted text-sm mt-1 font-medium">
+              Welcome back, {currentUser?.email?.split('@')[0] || "Admin"}
             </p>
           </div>
           <div className="flex gap-3">
-            <Link to="/admin/products/new" className="btn-primary py-2.5 px-5 text-sm">
-              + Add Product
+            <Link to="/admin/products/new" className="btn-primary py-3 px-6 text-xs uppercase tracking-widest font-black">
+              + New Product
             </Link>
-            <button onClick={handleLogout} className="btn-ghost py-2.5 px-5 text-sm">
+            <button onClick={handleLogout} className="btn-ghost py-3 px-6 text-xs uppercase tracking-widest font-bold border border-dark-600">
               Logout
             </button>
           </div>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <div className="glass-card p-6 group hover:border-neon-green/30">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+          <div className="glass-card p-8 group hover:-translate-y-1 transition-all">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-text-muted text-sm">Total Products</p>
-                <p className="font-heading font-bold text-3xl text-text-primary mt-1">{stats.products}</p>
+                <p className="text-text-muted text-xs uppercase tracking-widest font-bold opacity-70">Total Products</p>
+                <p className="font-heading font-black text-4xl text-text-primary mt-2">{stats.products}</p>
               </div>
-              <div className="w-12 h-12 rounded-xl bg-neon-green/10 flex items-center justify-center text-2xl">
+              <div className="w-14 h-14 rounded-2xl bg-neon-green/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
                 🐟
               </div>
             </div>
           </div>
 
-          <div className="glass-card p-6 group hover:border-aqua/30">
+          <div className="glass-card p-8 group hover:-translate-y-1 transition-all">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-text-muted text-sm">Orders</p>
-                <p className="font-heading font-bold text-3xl text-text-primary mt-1">{stats.orders}</p>
+                <p className="text-text-muted text-xs uppercase tracking-widest font-bold opacity-70">Recent Orders</p>
+                <p className="font-heading font-black text-4xl text-text-primary mt-2">{stats.orders}</p>
               </div>
-              <div className="w-12 h-12 rounded-xl bg-aqua/10 flex items-center justify-center text-2xl">
+              <div className="w-14 h-14 rounded-2xl bg-aqua/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
                 📦
               </div>
             </div>
           </div>
 
-          <div className="glass-card p-6 group hover:border-gold/30">
+          <div className="glass-card p-8 group hover:-translate-y-1 transition-all">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-text-muted text-sm">Categories</p>
-                <p className="font-heading font-bold text-3xl text-text-primary mt-1">4</p>
+                <p className="text-text-muted text-xs uppercase tracking-widest font-bold opacity-70">Collection Age</p>
+                <p className="font-heading font-black text-4xl text-text-primary mt-2">2y</p>
               </div>
-              <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-2xl">
-                📂
+              <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                📅
               </div>
             </div>
           </div>
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-          <Link to="/admin/products/new" className="glass-card p-4 text-center hover:border-neon-green/30 transition-all group">
-            <div className="text-2xl mb-2">➕</div>
-            <p className="text-text-secondary text-sm font-medium group-hover:text-neon-green">Add Product</p>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <Link to="/admin/products/new" className="glass-card p-6 text-center hover:border-neon-green/40 transition-all group">
+            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">➕</div>
+            <p className="text-text-primary text-[10px] uppercase tracking-widest font-black">Add Product</p>
           </Link>
-          <Link to="/admin/products" className="glass-card p-4 text-center hover:border-aqua/30 transition-all group">
-            <div className="text-2xl mb-2">📋</div>
-            <p className="text-text-secondary text-sm font-medium group-hover:text-aqua">All Products</p>
+          <Link to="/admin/products" className="glass-card p-6 text-center hover:border-aqua/40 transition-all group">
+            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">📋</div>
+            <p className="text-text-primary text-[10px] uppercase tracking-widest font-black">Inventory</p>
           </Link>
-          <Link to="/products" className="glass-card p-4 text-center hover:border-gold/30 transition-all group">
-            <div className="text-2xl mb-2">🏪</div>
-            <p className="text-text-secondary text-sm font-medium group-hover:text-gold">View Store</p>
+          <Link to="/products" className="glass-card p-6 text-center hover:border-gold/40 transition-all group">
+            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">🏪</div>
+            <p className="text-text-primary text-[10px] uppercase tracking-widest font-black">Public Store</p>
           </Link>
-          <Link to="/" className="glass-card p-4 text-center hover:border-purple/30 transition-all group">
-            <div className="text-2xl mb-2">🏠</div>
-            <p className="text-text-secondary text-sm font-medium group-hover:text-purple">Home Page</p>
+          <Link to="/" className="glass-card p-6 text-center hover:border-purple-400/40 transition-all group">
+            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">🏠</div>
+            <p className="text-text-primary text-[10px] uppercase tracking-widest font-black">Main Site</p>
           </Link>
         </div>
 
