@@ -4,6 +4,7 @@ import ProductCard from "../components/product/ProductCard";
 import { ProductCardSkeleton } from "../components/ui/Skeleton";
 import { sampleProducts, CATEGORIES, isFirebaseConfigured } from "../data/sampleData";
 import { getProducts } from "../services/productService";
+import heroImg from "../assets/hero.png";
 
 export default function Home() {
   const [featured, setFeatured] = useState([]);
@@ -111,7 +112,7 @@ export default function Home() {
             <div className="order-1 lg:order-2 relative animate-fade-in flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[500px] aspect-square rounded-full overflow-hidden border-[12px] border-white shadow-2xl z-10 bg-dark-900 group">
                 <img 
-                  src="/hero.png" 
+                  src={heroImg}
                   alt="Premium Assorted Guppies" 
                   className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-700" 
                   onError={(e) => {
