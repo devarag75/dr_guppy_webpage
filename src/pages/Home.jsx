@@ -4,7 +4,6 @@ import ProductCard from "../components/product/ProductCard";
 import { ProductCardSkeleton } from "../components/ui/Skeleton";
 import { sampleProducts, CATEGORIES, isFirebaseConfigured } from "../data/sampleData";
 import { getProducts } from "../services/productService";
-import heroImg from "../assets/hero.png";
 
 export default function Home() {
   const [featured, setFeatured] = useState([]);
@@ -40,102 +39,59 @@ export default function Home() {
 
   return (
     <div>
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-white mt-16" id="hero-section">
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-white mt-16 border-b border-dark-600" id="hero-section">
         {/* Decorative Grid Background */}
-        <div className="absolute inset-0 z-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+        <div className="absolute inset-0 z-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
-        <div className="container-app relative z-10 py-12 md:py-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            
-            {/* Left Column: Text Content */}
-            <div className="text-center lg:text-left order-2 lg:order-1">
-              
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neon-green/10 text-neon-green font-medium text-sm mb-6 animate-fade-in-up">
-                <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
-                Premium Fish Delivered
-              </div>
+        <div className="container-app relative z-10 py-16 md:py-24 flex flex-col items-center text-center">
+          
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neon-green/10 text-neon-green font-medium text-[13px] uppercase tracking-wide mb-8 animate-fade-in-up">
+            <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+            Premium Fish Delivery
+          </div>
 
-              {/* Tagline */}
-              <h1 className="font-heading font-black text-4xl md:text-5xl xl:text-6xl text-text-primary mb-6 animate-fade-in-up stagger-1 leading-[1.15]">
-                Premium Quality <br className="hidden lg:block"/>
-                <span className="text-neon-green relative">
-                  Guppies
-                  <svg className="absolute -bottom-2 lg:-bottom-4 left-0 w-full h-3 text-neon-green/20" viewBox="0 0 100 20" preserveAspectRatio="none">
-                    <path d="M0,10 Q50,20 100,10" fill="currentColor" />
-                  </svg>
-                </span>{" "}
-                <br className="hidden lg:block"/>
-                Delivered to Your Door
-              </h1>
+          {/* Tagline */}
+          <h1 className="font-heading font-black text-4xl md:text-6xl xl:text-7xl text-text-primary mb-6 animate-fade-in-up stagger-1 leading-[1.1] max-w-4xl mx-auto tracking-tight">
+            Premium Quality <span className="text-neon-green relative inline-block">Guppies</span> Delivered to Your Door
+          </h1>
 
-              <p className="text-text-secondary text-lg md:text-xl mb-10 animate-fade-in-up stagger-2 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Discover our handpicked collection of rare and fancy guppies. Selectively bred for superior genetics, vibrant colors, and optimal health. 🐟
-              </p>
+          <p className="text-text-secondary text-lg md:text-xl mb-10 animate-fade-in-up stagger-2 max-w-2xl mx-auto leading-relaxed">
+            Discover our handpicked collection of rare and fancy guppies. Selectively bred for superior genetics, vibrant colors, and optimal health.
+          </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up stagger-3">
-                <Link to="/products" className="btn-primary text-base px-8 py-4 shadow-xl shadow-neon-green/20 hover:shadow-neon-green/40 hover:-translate-y-1 transition-all" id="cta-shop-now">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                  </svg>
-                  Shop Now
-                </Link>
-                <Link to="/products" className="btn-secondary text-base px-8 py-4 hover:-translate-y-1 transition-transform" id="cta-view-collection">
-                  View Collection
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up stagger-3">
+            <Link to="/products" className="btn-primary" id="cta-shop-now">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+              Shop Now
+            </Link>
+            <Link to="/products" className="btn-secondary" id="cta-view-collection">
+              View Collection
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
 
-              {/* Stats */}
-              <div className="flex justify-center lg:justify-start gap-8 md:gap-12 mt-12 animate-fade-in-up stagger-4 pt-8 border-t border-dark-600">
-                <div>
-                  <span className="font-heading font-black text-2xl md:text-3xl text-text-primary">50+</span>
-                  <p className="text-text-muted text-sm mt-1 font-medium">Rare Varieties</p>
-                </div>
-                <div className="w-px h-12 bg-dark-600"></div>
-                <div>
-                  <span className="font-heading font-black text-2xl md:text-3xl text-text-primary">10k+</span>
-                  <p className="text-text-muted text-sm mt-1 font-medium">Happy Fish</p>
-                </div>
-                <div className="w-px h-12 bg-dark-600"></div>
-                <div>
-                  <span className="font-heading font-black text-2xl md:text-3xl text-text-primary">100%</span>
-                  <p className="text-text-muted text-sm mt-1 font-medium">Live Arrival</p>
-                </div>
-              </div>
+          {/* Stats */}
+          <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-16 animate-fade-in-up stagger-4 pt-10 border-t border-dark-600 max-w-3xl w-full">
+            <div className="flex flex-col items-center">
+              <span className="font-heading font-black text-2xl md:text-4xl text-text-primary">50+</span>
+              <p className="text-text-muted text-xs md:text-sm mt-1 font-bold uppercase tracking-wide">Rare Varieties</p>
             </div>
-
-            {/* Right Column: Hero Image Container */}
-            <div className="order-1 lg:order-2 relative animate-fade-in flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[500px] aspect-square rounded-full overflow-hidden border-[12px] border-white shadow-2xl z-10 bg-dark-900 group">
-                <img 
-                  src={heroImg}
-                  alt="Premium Assorted Guppies" 
-                  className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-700" 
-                  onError={(e) => {
-                    e.target.src = 'https://images.unsplash.com/photo-1522069213508-fd9cb14c5b16?q=80&w=600&h=600&auto=format&fit=crop';
-                  }}
-                />
-              </div>
-              
-              {/* Floating aesthetic elements */}
-              <div className="absolute top-10 -left-10 md:top-20 md:-left-12 w-24 h-24 bg-aqua/20 rounded-full blur-2xl -z-10"></div>
-              <div className="absolute bottom-10 -right-10 md:bottom-20 md:-right-12 w-32 h-32 bg-neon-green/20 rounded-full blur-3xl -z-10"></div>
-              
-              <div className="hidden md:flex absolute top-1/4 -left-6 z-20 bg-white glass-card px-4 py-3 rounded-xl shadow-lg items-center gap-3 animate-fade-in-up stagger-3">
-                <div className="bg-green-100 p-2 rounded-full">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                </div>
-                <div>
-                  <p className="text-xs text-text-muted font-medium">Quality Check</p>
-                  <p className="text-sm font-bold text-text-primary">100% Guaranteed</p>
-                </div>
-              </div>
+            <div className="w-px h-12 bg-dark-600 hidden sm:block"></div>
+            <div className="flex flex-col items-center">
+              <span className="font-heading font-black text-2xl md:text-4xl text-text-primary">10k+</span>
+              <p className="text-text-muted text-xs md:text-sm mt-1 font-bold uppercase tracking-wide">Happy Fish</p>
             </div>
-
+            <div className="w-px h-12 bg-dark-600 hidden sm:block"></div>
+            <div className="flex flex-col items-center">
+              <span className="font-heading font-black text-2xl md:text-4xl text-text-primary">100%</span>
+              <p className="text-text-muted text-xs md:text-sm mt-1 font-bold uppercase tracking-wide">Live Arrival</p>
+            </div>
           </div>
         </div>
       </section>
