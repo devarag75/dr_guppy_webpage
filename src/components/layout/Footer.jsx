@@ -12,16 +12,18 @@ export default function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-5 group">
-              <img
-                src={logoImage}
-                alt="Dr Guppy Farm Logo"
-                className="w-12 h-12 object-cover rounded-full shadow-md bg-white grayscale group-hover:grayscale-0 transition-all duration-300"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
-              />
-              <div className="hidden w-10 h-10 rounded-full bg-gradient-to-br from-neon-green to-aqua items-center justify-center text-white font-bold text-sm font-heading shadow-md">
+              <div className="w-[50px] h-[50px] rounded-full overflow-hidden shadow-md bg-white shrink-0 flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
+                <img 
+                  src={logoImage} 
+                  alt="Dr Guppy Farm Logo" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 scale-[1.1]"
+                  onError={(e) => {
+                    e.target.parentElement.style.display = 'none';
+                    e.target.parentElement.nextSibling.style.display = 'flex';
+                  }}
+                />
+              </div>
+              <div className="hidden w-[50px] h-[50px] rounded-full bg-gradient-to-br from-neon-green to-aqua items-center justify-center text-white font-bold text-sm font-heading shadow-md">
                 DR
               </div>
               <span className="font-heading font-black text-xl text-text-primary tracking-tight uppercase">
