@@ -64,12 +64,6 @@ export default function ProductCard({ product }) {
           </svg>
         </button>
 
-        {/* Category Badge */}
-        {product.featured && (
-          <div className="absolute top-3 left-3 bg-[#fb641b] text-white text-[10px] font-bold px-2.5 py-1 rounded shadow-sm uppercase tracking-wider">
-            Featured
-          </div>
-        )}
 
         {/* Stock Badge */}
         {!stockStatus.available && (
