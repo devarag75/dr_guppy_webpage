@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../components/product/ProductCard";
 import { ProductCardSkeleton } from "../components/ui/Skeleton";
-import { sampleProducts, CATEGORIES, isFirebaseConfigured } from "../data/sampleData";
+import { sampleProducts, isFirebaseConfigured } from "../data/sampleData";
 import { getProducts } from "../services/productService";
 
 export default function Home() {
@@ -74,59 +74,6 @@ export default function Home() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
-          </div>
-
-          {/* Stats */}
-          <div className="flex flex-wrap justify-center gap-6 md:gap-12 mt-16 animate-fade-in-up stagger-4 pt-10 border-t border-dark-600 max-w-3xl w-full">
-            <div className="flex flex-col items-center">
-              <span className="font-heading font-black text-2xl md:text-4xl text-text-primary">50+</span>
-              <p className="text-text-muted text-xs md:text-sm mt-1 font-bold uppercase tracking-wide">Rare Varieties</p>
-            </div>
-            <div className="w-px h-12 bg-dark-600 hidden sm:block"></div>
-            <div className="flex flex-col items-center">
-              <span className="font-heading font-black text-2xl md:text-4xl text-text-primary">10k+</span>
-              <p className="text-text-muted text-xs md:text-sm mt-1 font-bold uppercase tracking-wide">Happy Fish</p>
-            </div>
-            <div className="w-px h-12 bg-dark-600 hidden sm:block"></div>
-            <div className="flex flex-col items-center">
-              <span className="font-heading font-black text-2xl md:text-4xl text-text-primary">100%</span>
-              <p className="text-text-muted text-xs md:text-sm mt-1 font-bold uppercase tracking-wide">Live Arrival</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== CATEGORIES SECTION ===== */}
-      <section className="py-16 md:py-24" id="categories-section">
-        <div className="container-app">
-          <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text-primary mb-3">
-              Browse by <span className="text-neon-green">Category</span>
-            </h2>
-            <p className="text-text-secondary max-w-lg mx-auto">
-              Find the perfect guppy for your aquarium from our curated categories
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {CATEGORIES.map((cat, i) => (
-              <Link
-                key={cat.id}
-                to={`/products?category=${cat.id}`}
-                className={`glass-card p-6 md:p-8 text-center group animate-fade-in-up stagger-${i + 1}`}
-                id={`category-${cat.id}`}
-              >
-                <div className="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {cat.icon}
-                </div>
-                <h3 className="font-heading font-semibold text-text-primary mb-2 group-hover:text-neon-green transition-colors">
-                  {cat.name}
-                </h3>
-                <p className="text-text-muted text-xs hidden md:block">
-                  {cat.description}
-                </p>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
