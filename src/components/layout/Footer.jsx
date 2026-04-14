@@ -15,7 +15,7 @@ export default function Footer() {
               <img 
                 src={logoImage} 
                 alt="Dr Guppy Farm Logo" 
-                className="w-12 h-12 object-contain rounded-full shadow-md bg-white grayscale group-hover:grayscale-0 transition-all duration-300"
+                className="w-12 h-12 object-cover rounded-full shadow-md bg-white grayscale group-hover:grayscale-0 transition-all duration-300"
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextSibling.style.display = 'flex';

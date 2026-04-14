@@ -61,7 +61,7 @@ export default function Navbar() {
               <img 
                 src={logoImage} 
                 alt="Dr Guppy Farm Logo" 
-                className="w-12 h-12 object-contain rounded-full shadow-md group-hover:shadow-lg transition-shadow bg-white"
+                className="w-12 h-12 object-cover rounded-full shadow-md group-hover:shadow-lg transition-shadow bg-white"
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextSibling.style.display = 'flex';
