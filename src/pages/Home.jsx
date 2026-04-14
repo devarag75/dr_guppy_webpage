@@ -73,18 +73,18 @@ export default function Home() {
       {/* ===== FEATURED PRODUCTS ===== */}
       <section className="py-12 md:py-20 bg-white" id="featured-section">
         <div className="container-app">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div className="flex items-center justify-between mb-10 pb-4 border-b border-dark-600">
             <div>
-              <h2 className="font-heading font-bold text-2xl md:text-3xl text-text-primary mb-2">
+              <h2 className="font-heading font-black text-2xl md:text-3xl text-text-primary tracking-tight">
                 Featured <span className="text-neon-green">Guppies</span>
               </h2>
-              <p className="text-text-secondary text-sm max-w-md">
-                Our hand-picked premium collection. Selectively bred for superior genetics and colors.
+              <p className="hidden md:block text-text-muted text-xs font-bold uppercase tracking-widest mt-1 opacity-70">
+                Premium Selection
               </p>
             </div>
-            <Link to="/products" className="text-neon-green font-bold text-sm flex items-center gap-1 hover:underline group" id="view-all-products">
-              View All Collection
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform">
+            <Link to="/products" className="btn-secondary !py-2 !px-4 !text-xs !rounded-lg hover:bg-neon-green hover:text-white transition-all shadow-none">
+              View All
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
@@ -92,7 +92,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {loading
-              ? [...Array(8)].map((_, i) => (
+              ? [...Array(4)].map((_, i) => (
                   <ProductCardSkeleton key={i} />
                 ))
               : featured.map((product) => (
@@ -103,28 +103,28 @@ export default function Home() {
       </section>
 
       {/* ===== WHY CHOOSE US ===== */}
-      <section className="py-12 md:py-16 bg-gray-50/50" id="trust-section">
+      <section className="py-12 md:py-16 bg-dark-900/5" id="trust-section">
         <div className="container-app">
           <div className="text-center mb-10">
-            <h2 className="font-heading font-bold text-2xl md:text-3xl text-text-primary mb-2">
-              Why Choose <span className="text-neon-green">DR Guppy Farm</span>?
+            <h2 className="font-heading font-black text-2xl md:text-3xl text-text-primary tracking-tight mb-2">
+              Why <span className="text-neon-green uppercase">DR Guppy</span>?
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: "🏆", title: "Premium Quality", desc: "Selectively bred for top genetics" },
-              { icon: "📦", title: "Safe Packaging", desc: "Insulated boxes & oxygen bags" },
-              { icon: "🚚", title: "All India Delivery", desc: "Express shipping with live tracking" },
-              { icon: "💯", title: "Live Guarantee", desc: "100% live arrival assurance" },
+              { icon: "🏆", title: "Premium Quality", desc: "Selectively bred genetics" },
+              { icon: "📦", title: "Safe Shipping", desc: "Insulated & oxygenated" },
+              { icon: "🚚", title: "Pan-India", desc: "Express delivery tracking" },
+              { icon: "💯", title: "Live Arrival", desc: "100% guarantee assurance" },
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-white p-6 rounded-xl border border-dark-600 shadow-sm text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                className="bg-white p-5 rounded-xl border border-dark-600 shadow-sm text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="font-heading font-bold text-text-primary text-sm mb-1">{item.title}</h3>
-                <p className="text-text-muted text-xs leading-relaxed">{item.desc}</p>
+                <div className="text-2xl mb-2">{item.icon}</div>
+                <h3 className="font-heading font-bold text-text-primary text-xs uppercase tracking-wider mb-1">{item.title}</h3>
+                <p className="text-text-muted text-[11px] leading-relaxed font-medium">{item.desc}</p>
               </div>
             ))}
           </div>

@@ -58,7 +58,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-18">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group" id="navbar-logo">
-              <div className="w-[50px] h-[50px] rounded-full overflow-hidden shadow-md group-hover:shadow-lg transition-shadow bg-white shrink-0 flex items-center justify-center">
+              <div className="w-[45px] h-[45px] rounded-full overflow-hidden shadow-sm group-hover:shadow-md transition-all bg-white shrink-0 flex items-center justify-center group-hover:scale-105">
                 <img 
                   src={logoImage} 
                   alt="Dr Guppy Farm Logo" 

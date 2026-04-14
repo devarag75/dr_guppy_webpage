@@ -41,7 +41,7 @@ export default function ProductCard({ product }) {
         <img
           src={thumbnail}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           loading="lazy"
           onError={(e) => {
             e.target.src = fallbackImage;
@@ -51,7 +51,7 @@ export default function ProductCard({ product }) {
         {/* Wishlist Button */}
         <button
           onClick={handleToggleWishlist}
-          className="absolute top-2 right-2 p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-sm hover:text-coral transition-all z-10 text-dark-400 border border-gray-100"
+          className="absolute top-2 right-2 p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-sm hover:text-coral transition-all z-10 text-dark-400 border border-gray-100 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
           aria-label="Toggle wishlist"
         >
           <svg
@@ -70,25 +70,25 @@ export default function ProductCard({ product }) {
 
         {/* Stock Badge */}
         {!stockStatus.available && (
-          <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px] flex items-center justify-center z-10">
-            <span className="bg-coral text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-sm uppercase tracking-wider">Sold Out</span>
+          <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] flex items-center justify-center z-10">
+            <span className="bg-coral text-white font-bold text-[10px] px-3 py-1.5 rounded-full shadow-sm uppercase tracking-wider">Sold Out</span>
           </div>
         )}
       </div>
 
       {/* Info Content */}
       <div className="p-4 flex flex-col flex-1">
-        <p className="text-text-muted text-[10px] font-bold uppercase tracking-widest mb-1 opacity-70">
+        <p className="text-neon-green text-[9px] font-black uppercase tracking-[0.1em] mb-1">
           {product.category?.replace("-", " ")}
         </p>
-        <h3 className="font-heading font-semibold text-text-primary text-sm md:text-base leading-snug mb-2 line-clamp-2 transition-colors">
+        <h3 className="font-heading font-bold text-text-primary text-sm md:text-base leading-snug mb-2 line-clamp-2 transition-colors group-hover:text-neon-green">
           {product.name}
         </h3>
         
         {/* Price and Action align to bottom */}
         <div className="mt-auto space-y-3">
           <div className="flex items-center justify-between">
-            <span className="font-heading font-bold text-text-primary text-lg">
+            <span className="font-heading font-black text-text-primary text-lg">
               {formatPrice(product.price)}
             </span>
           </div>
@@ -96,12 +96,12 @@ export default function ProductCard({ product }) {
           <button
             onClick={handleAddToCart}
             disabled={!stockStatus.available}
-            className={`w-full py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2 ${
+            className={`w-full py-2.5 rounded-lg text-xs font-black uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
               inCart
                 ? "bg-green-50 text-green-600 border border-green-100"
                 : stockStatus.available
-                ? "bg-[#ff9f00] hover:bg-[#fb641b] text-white shadow-sm"
-                : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                ? "bg-text-primary text-white hover:bg-neon-green shadow-sm"
+                : "bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200"
             }`}
           >
             {inCart ? (
@@ -111,11 +111,11 @@ export default function ProductCard({ product }) {
               </>
             ) : stockStatus.available ? (
               <>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                 Add to Cart
               </>
             ) : (
-              "Out of Stock"
+              "Sold Out"
             )}
           </button>
         </div>

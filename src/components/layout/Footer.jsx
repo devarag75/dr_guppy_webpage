@@ -11,27 +11,27 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-5 group">
-              <div className="w-[50px] h-[50px] rounded-full overflow-hidden shadow-md bg-white shrink-0 flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6 group">
+              <div className="w-[50px] h-[50px] rounded-full overflow-hidden shadow-sm bg-white shrink-0 flex items-center justify-center group-hover:scale-105 transition-all duration-300">
                 <img 
                   src={logoImage} 
                   alt="Dr Guppy Farm Logo" 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300 scale-[1.1]"
+                  className="w-full h-full object-cover transition-all duration-300 scale-[1.1]"
                   onError={(e) => {
                     e.target.parentElement.style.display = 'none';
                     e.target.parentElement.nextSibling.style.display = 'flex';
                   }}
                 />
               </div>
-              <div className="hidden w-[50px] h-[50px] rounded-full bg-gradient-to-br from-neon-green to-aqua items-center justify-center text-white font-bold text-sm font-heading shadow-md">
+              <div className="hidden w-[50px] h-[50px] rounded-full bg-gradient-to-br from-neon-green to-aqua items-center justify-center text-white font-bold text-sm font-heading">
                 DR
               </div>
-              <span className="font-heading font-black text-xl text-text-primary tracking-tight uppercase">
+              <span className="font-heading font-black text-xl text-text-primary tracking-tighter uppercase">
                 Dr Guppy <span className="text-neon-green">Farm</span>
               </span>
             </div>
-            <p className="text-text-muted text-sm leading-relaxed">
-              Premium quality guppies bred with care and expertise. We deliver healthy, vibrant fish to your doorstep.
+            <p className="text-text-muted text-sm leading-relaxed max-w-xs">
+              Premium quality guppies selectively bred for superior genetics and vibrant colors. Delivering excellence to your aquarium.
             </p>
           </div>
 
