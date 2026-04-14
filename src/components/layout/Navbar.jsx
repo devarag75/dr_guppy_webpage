@@ -58,7 +58,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group" id="navbar-logo">
               <img 
-                src="/logo.png" 
+                src={`${import.meta.env.BASE_URL}logo.png`} 
                 alt="Dr Guppy Farm Logo" 
                 className="w-12 h-12 object-contain rounded-full shadow-md group-hover:shadow-lg transition-shadow bg-white"
                 onError={(e) => {
