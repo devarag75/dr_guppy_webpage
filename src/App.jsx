@@ -21,7 +21,7 @@ import ProductList from "./pages/admin/ProductList";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <AuthProvider>
         <CartProvider>
           <WishlistProvider>
